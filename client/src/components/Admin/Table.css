@@ -1,0 +1,114 @@
+/**/
+.button-solid {
+    text-align: center;
+    border:none;
+    border-bottom: 0.5px solid grey !important;
+    min-width: 500px;
+    min-height: 50px;
+}
+button-solid:focus{
+    border: none;
+    outline: none; 
+    padding: 5px 10px;
+    background-color: #000000;
+    color: #000;
+}
+
+.button-solid:hover{
+    background-color: #acd8f07a; 
+    
+}
+
+ /* Table CSS */
+ .table{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-spacing: 5px 5px;
+    border: 2px solid;
+    border-radius: 5px;
+    border-color: rgba(0, 0, 0, 0.103);
+    border-collapse: collapse;
+}
+
+.table th  {
+    width: fit-content;
+    height: fit-content;
+    
+}
+
+.adTbody tr:hover{
+    background-color: #acd8f07a;
+
+}
+.table tr {
+    border-bottom: 1px solid #ddd;
+    transition-duration: 0.4s;
+    cursor:default;
+}
+
+
+
+ /* Pagination CSS*/
+.pagination-container{
+    width: 25%;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.pagination-container li {
+    cursor: pointer;
+    list-style-type: none;
+
+}
+
+.previous-page{
+    
+    border-radius: 5px;
+    pointer-events: all;
+    cursor: default;
+}
+.previous-page:hover{
+    background-color: #acd8f07a;
+}
+
+.next-page{   
+     
+    border-radius: 5px;
+    
+    cursor: pointer;
+}
+.next-page:hover{
+    background-color: #acd8f07a;
+}
+
+.pagination-active{
+    cursor:default;
+    border-radius: 50%;
+    background-color: #acd8f07a;
+
+}
+.add-btn{
+    transition-duration: 0.4s;
+    background-color: #acd8f07a;
+    border: 0.5px solid rgba(102, 102, 102, 0.151);
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-weight: bold;
+    color:black;
+    font-size: 15px;
+    margin-left: 90%;
+    align-content: left;
+    display: flex;
+    margin-bottom: 10px;
+    
+  }
+  .add-btn:hover{
+    background-color: rgb(250, 250, 250);
+    border: 1px solid rgba(0, 212, 212, 0.514);
+    color: black;
+  }

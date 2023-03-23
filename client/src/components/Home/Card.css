@@ -5,10 +5,7 @@
     transition: .3s;
     animation: ease-in;
     border-radius: 5px;
-    margin-top: 2rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    
+    margin-top: 1rem;
 }
 
 .card-container:hover {

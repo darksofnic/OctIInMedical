@@ -14,12 +14,8 @@ export default function PatientMaker(props) {
         sex: "",
         zipCode: "",
         bmi: "",
-        weight: "",
-        image: "placeholder",
-        examID: "",
-        icuAdmit: "",
-        icuNum: "",
-        mortality: ''
+        exams: ""
+
     });
 
     const handleAddFormChange = (event) => {
@@ -40,7 +36,7 @@ export default function PatientMaker(props) {
     const handleAddFormSubmit = (event) => {
         event.preventDefault();
 
-        fetch('https://server-octintmedical.onrender.com/exams/', {
+        fetch('http://localhost:9000/exams/', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -52,12 +48,8 @@ export default function PatientMaker(props) {
                 sex: addFormData.sex,
                 zipCode: addFormData.zipCode,
                 bmi: addFormData.bmi,
-                weight: addFormData.weight,
-                image: addFormData.image,
-                examID: addFormData.examID,
-                icuAdmit: addFormData.icuAdmit,
-                icuNum: addFormData.icuNum,
-                mortality: addFormData.mortality
+                exams: addFormData.exams,
+
             })
         })
             .then(res => window.location.reload(false))
@@ -107,50 +99,16 @@ export default function PatientMaker(props) {
                     onChange={handleAddFormChange}
                 />
                 </Tooltip>
-                <Tooltip text="weight">
-                <label>Weight</label><input
-                    type="number"
-                    name="weight"
-                    required="required"
-                    placeholder="Weight"
-                    onChange={handleAddFormChange}
-                />
-                </Tooltip>
-                <Tooltip text="ExamID">
-                <label>ExamID</label><input
+
+                <Tooltip text="Exams">
+                <label>Exams</label><input
                     type="text"
-                    name="examID"
+                    name="exams"
                     required="required"
-                    placeholder="Exam ID...."
+                    placeholder="Exams...."
                     onChange={handleAddFormChange}
                 />
                 </Tooltip>
-                <Tooltip text="ICUAdmit">
-                <label>ICUAdmit</label><input
-                    type="text"
-                    name="icuAdmit"
-                    required="required"
-                    placeholder="ICU Admittance..."
-                    onChange={handleAddFormChange}
-                />
-                </Tooltip>
-                <Tooltip text="ICUNUM">
-                <label>ICUNum</label><input
-                    type="number"
-                    name="icuNum"
-                    required="required"
-                    placeholder="ICU Number..."
-                    onChange={handleAddFormChange}
-                />
-                </Tooltip>
-                <Tooltip text="Mortality">
-                <label>Mortality</label><input
-                    type="text"
-                    name="mortality"
-                    required="required"
-                    placeholder="Mortality..."
-                    onChange={handleAddFormChange}
-                /></Tooltip>
                 
                 <br />
                 <button className="add-pop"  type="submit"><span>Add</span></button>

@@ -1,5 +1,5 @@
 {
-  "proxy": "https://server-octintmedical.onrender.com/",
+  "proxy": "localhost:9000",
   "name": "api",
   "version": "0.0.0",
   "private": true,

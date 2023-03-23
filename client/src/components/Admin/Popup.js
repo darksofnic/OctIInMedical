@@ -11,19 +11,14 @@ export default function Popup(props) {
         sex: "",
         zipCode: "",
         bmi: "",
-        weight: "",
-        image: "",
-        examID: "",
-        icuAdmit: "",
-        icuNum: "",
-        mortality: ''
+        exams: ""
     });
 
     const handleDeleteClick = () => {
         const confirmed = window.confirm("Are you sure you want to delete this Patient?");
         if(confirmed){
         // const newData = data.filter(patient => patient.patientId !== singlePatient);
-        fetch('https://server-octintmedical.onrender.com/exams/' + props.singlePatient._id, {
+        fetch('http://localhost:9000/exams/' + props.singlePatient._id, {
             method: 'DELETE',
             header: 'Access-Control-Allow-Origin'
         })
@@ -52,7 +47,7 @@ export default function Popup(props) {
     //Adds input data to database with the API as a json form
     const handleEditFormSubmit = (event) => {
         event.preventDefault();
-        fetch('https://server-octintmedical.onrender.com/exams/' + props.singlePatient._id, {
+        fetch('http://localhost:9000/exams/' + props.singlePatient._id, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -63,12 +58,7 @@ export default function Popup(props) {
                 sex: (editFormData.sex !== "" ? editFormData.sex : props.singlePatient.sex),
                 zipCode: (editFormData.zipCode !== "" ? editFormData.zipCode : props.singlePatient.zipCode),
                 bmi: (editFormData.bmi !== "" ? editFormData.bmi : props.singlePatient.bmi),
-                weight: (editFormData.weight !== "" ? editFormData.weight : props.singlePatient.weight),
-                image: (editFormData.image !== "" ? editFormData.image : props.singlePatient.image),
-                examID: (editFormData.examID !== "" ? editFormData.examID : props.singlePatient.examID),
-                icuAdmit: (editFormData.icuAdmit !== "" ? editFormData.icuAdmit : props.singlePatient.icuAdmit),
-                icuNum: (editFormData.icuNum !== "" ? editFormData.icuNum : props.singlePatient.icuNum),
-                mortality: (editFormData.mortality !== "" ? editFormData.mortality : props.singlePatient.mortality)
+                exams: (editFormData.exams !== "" ? editFormData.exams : props.singlePatient.exams)
             })
         })
             .then(res => window.location.reload(false))
@@ -143,57 +133,14 @@ export default function Popup(props) {
                             </input>
                         </div>
 
-                        <div className='form-group'>
-                            <label>Weight</label>
-                            <input
-                                type="number"
-                                name="weight"
-                                defaultValue={props.singlePatient.weight}
-                                placeholder="Weight"
-                                onChange={handleEditFormChange}>
-                            </input>
-                        </div>
 
                         <div className='form-group'>
-                            <label>Exam ID</label>
+                            <label>Exams</label>
                             <input
                                 type="text"
-                                name="examID"
-                                defaultValue={props.singlePatient.examID}
-                                placeholder="Exam ID"
-                                onChange={handleEditFormChange}>
-                            </input>
-                        </div>
-
-                        <div className='form-group'>
-                            <label>ICUAdmit</label>
-                            <input
-                                type="text"
-                                name="icuAdmit"
-                                defaultValue={props.singlePatient.icuAdmit}
-                                placeholder="ICU Admittance"
-                                onChange={handleEditFormChange}>
-                            </input>
-                        </div>
-
-                        <div className='form-group'>
-                            <label>ICUNum</label>
-                            <input
-                                type="number"
-                                name="icuNum"
-                                defaultValue={props.singlePatient.icuNum}
-                                placeholder="Number of ICU Visits"
-                                onChange={handleEditFormChange}>
-                            </input>
-                        </div>
-
-                        <div className='form-group'>
-                            <label>Mortality</label>
-                            <input
-                                type="text"
-                                name="mortality"
-                                defaultValue={props.singlePatient.mortality}
-                                placeholder="Mortality"
+                                name="exams"
+                                defaultValue={props.singlePatient.exams}
+                                placeholder="Exams"
                                 onChange={handleEditFormChange}>
                             </input>
                         </div>

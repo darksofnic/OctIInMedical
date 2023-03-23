@@ -45,46 +45,16 @@ const RowMutator = ({
                     value={updateData.bmi}
                     onChange={handleEditFormChange}
                 ></input>
+                
                 <input
                     type="text"
                     required="required"
                     placeholder=""
-                    name="weight"
-                    value={updateData.weight}
+                    name="exams"
+                    value={updateData.exams}
                     onChange={handleEditFormChange}
                 ></input>
-                <input
-                    type="text"
-                    required="required"
-                    placeholder=""
-                    name="examID"
-                    value={updateData.examID}
-                    onChange={handleEditFormChange}
-                ></input>
-                <input
-                    type="text"
-                    required="required"
-                    placeholder=""
-                    name="icuAdmit"
-                    value={updateData.icuAdmit}
-                    onChange={handleEditFormChange}
-                ></input>
-                <input
-                    type="text"
-                    required="required"
-                    placeholder=""
-                    name="icuNum"
-                    value={updateData.icuNum}
-                    onChange={handleEditFormChange}
-                ></input>
-                <input
-                    type="text"
-                    required="required"
-                    placeholder=""
-                    name="mortality"
-                    value={updateData.mortality}
-                    onChange={handleEditFormChange}
-                ></input>
+              
             </td>
             <td>
                 <button type="submit">Save</button>

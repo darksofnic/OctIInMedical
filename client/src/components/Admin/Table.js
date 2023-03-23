@@ -39,12 +39,8 @@ export default function PatientTable(props) {
     sex: "",
     zipCode: "",
     bmi: "",
-    weight: "",
-    image: "placeholder",
-    examID: "",
-    icuAdmit: "",
-    icuNum: "",
-    mortality: ''
+    exams: "",
+
   });
 
   const handleEditFormChange = (event) => {
@@ -85,11 +81,8 @@ export default function PatientTable(props) {
           <th>Sex</th>
           <th>Zipcode</th>
           <th>BMI</th>
-          <th>Weight</th>
-          <th>ExamID</th>
-          <th>ICU Admit</th>
-          <th>ICU Num</th>
-          <th>Mortality</th>
+          <th>Exams #</th>
+
         </tr>
       </thead>
       <tbody className="adTbody">
@@ -111,14 +104,15 @@ export default function PatientTable(props) {
       <td>{patient.sex}</td>
       <td>{patient.zipCode}</td>
       <td>{patient.bmi}</td>
-      <td>{patient.weight}</td>
-      <td>{patient.examID}</td>
-      <td>{patient.icuAdmit}</td>
-      <td>{patient.icuNum}</td>
-      <td>{patient.mortality}</td>
+      <td>{patient.exams.length}</td>
+      {console.log(patient.exams)}
+
+      
+
     </tr>
 
   );
+  //<td>{patient.exams}</td>
 
   const handleClick = patient => (e) => {
     // Patient to be update, edit or delete!

@@ -3,7 +3,25 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 //exam schema
+
 const examSchema = new Schema ({
+    
+       examID:{
+        type: String,
+       },
+       image: {
+        type: String,
+       },
+       note: {
+        type: String
+       },
+       createdOn:{
+        type: Date, default: Date.now
+       }
+
+    
+})
+const patientSchema = new Schema ({
     patientId: {
         type: String,
         required: true
@@ -36,7 +54,8 @@ const examSchema = new Schema ({
         type: String,
         required: true
     },
-    examID: {
+    examID: [examSchema],
+    brixia:{
         type: String,
         required: true
     },
@@ -51,11 +70,7 @@ const examSchema = new Schema ({
     mortality: {
         type: String,
         required: true
-    },
-    note: {
-        type: String,
-        required: false
     }
 }, { timestamps: true })
 
-module.exports = mongoose.model('Exam', examSchema)
+module.exports = mongoose.model('Exam', patientSchema)

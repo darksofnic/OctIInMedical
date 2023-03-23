@@ -1,5 +1,4 @@
 import Table from "./Table"
-
 import './Admin.css'
 
 import React,{useState} from "react";

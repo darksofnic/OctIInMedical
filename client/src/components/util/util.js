@@ -4,7 +4,7 @@ function useGetData() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch('https://oct-in-api.onrender.com/exams')
+    fetch('https://server-octintmedical.onrender.com/exams')
       .then(response => response.json())
       .then(data =>  setData(data))
       .catch(error => console.error(error));

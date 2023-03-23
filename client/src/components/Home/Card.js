@@ -16,7 +16,7 @@ function Card(props) {
                 </div>
                 <div className='card-bod'>
                     <p>{exam.patientName}</p>
-                    {exam.sex == 'M' ? <i className="fa-solid fa-mars fa-lg"></i> : <i className="fa-solid fa-venus fa-lg"></i>}
+                    {exam.sex === 'M' ? <i className="fa-solid fa-mars fa-lg"></i> : <i className="fa-solid fa-venus fa-lg"></i>}
                     
                     <p className='mt-4'>Age: {exam.age} </p>
                 </div>

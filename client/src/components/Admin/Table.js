@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate";
 import Popup from './Popup'
 import Search from "../Search"
 import './Table.css'
-import { Action } from "@remix-run/router";
+
 
 // declare a default function called PatientTable
 export default function PatientTable(props) {
@@ -24,7 +24,7 @@ export default function PatientTable(props) {
   const pagesVisited = pageNumber * usersPerPage;
 
   // calculate the total number of pages required for pagination based on the length of the data array and usersPerPage
-  const [pageCount, setPageCount] = useState(Math.ceil(props.length / usersPerPage));
+  const pageCount = Math.ceil(props.length / usersPerPage);
   //
 
   // function to set the data

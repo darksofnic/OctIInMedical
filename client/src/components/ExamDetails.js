@@ -42,7 +42,7 @@ function ExamDetails() {
     return (
         <div className='container'>
             {
-                data && data.filter(exams => exams.patientId == patientId)
+                data && data.filter(exams => exams.patientId === patientId)
                     .map(exams =>
                         // <List>
                         //     <ListItem>

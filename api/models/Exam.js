@@ -1,16 +1,36 @@
 const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
-
-//exam schema
 const examSchema = new Schema ({
-    patientId: {
+    examID: {
         type: String,
         required: true
     },
-    patientName: {
+    imageURL: {
         type: String,
-        required: false
+        required: true
+    },
+    notes: {
+        type: String,
+        required: true
+    },
+    Score: {
+        type: String,
+    },
+    createOn: {
+        type: Date, 
+        default: DataTransfer.now
+    },
+    lastUpdate: {
+        type: Date
+    }
+});
+
+//exam schema
+const patientSchema = new Schema ({
+    patientId: {
+        type: String,
+        required: true
     },
     age: {
         type: Number,
@@ -28,30 +48,9 @@ const examSchema = new Schema ({
         type: Number,
         required: true
     },
-    weight: {
-        type: Number,
-        required: true
-    },
-    image: {
-        type: String,
-        required: true
-    },
-    examID: {
-        type: String,
-        required: true
-    },
-    icuAdmit: {
-        type: String,
-        required: true
-    },
-    icuNum: {
-        type: Number,
-        required: true
-    },
-    mortality: {
-        type: String,
-        required: true
-    },
+    exams: [
+        examSchema
+    ],
     note: {
         type: String,
         required: false

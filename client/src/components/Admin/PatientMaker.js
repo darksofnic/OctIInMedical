@@ -43,12 +43,11 @@ export default function PatientMaker(props) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                patientId: "COVID-19-AR-"+(parseInt(props.lastID) +1),
+                patientId: "COVID-19-AR-"+(parseInt(props.lastID) +1).toString().padStart(props.lastID.length, "0"),
                 age: addFormData.age,
                 sex: addFormData.sex,
                 zipCode: addFormData.zipCode,
-                bmi: addFormData.bmi,
-                exams: addFormData.exams,
+                bmi: addFormData.bmi
 
             })
         })
@@ -96,16 +95,6 @@ export default function PatientMaker(props) {
                     name="bmi"
                     required="required"
                     placeholder="BMI..."
-                    onChange={handleAddFormChange}
-                />
-                </Tooltip>
-
-                <Tooltip text="Exams">
-                <label>Exams</label><input
-                    type="text"
-                    name="exams"
-                    required="required"
-                    placeholder="Exams...."
                     onChange={handleAddFormChange}
                 />
                 </Tooltip>

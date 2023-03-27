@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { Link } from 'react-router-dom';
 import './details.css'
 
+
 function ExamDetails() {
     const { patientId } = useParams();
     const [record, setrecord] = useState();
@@ -43,13 +44,15 @@ function ExamDetails() {
             {
                 data && data.filter(record => record.patientId === patientId)
                     .map(record =>
-                        // <List>
-                        //     <ListItem>
-                        //         Age: {record.age}
-                        //     </ListItem>
-                        // </List>
                         <div >
-                            <div>
+                            <div className="return">
+                                <Link to={"/"}>
+                                    <i class="fa-solid fa-arrow-left fa-2xl"></i>
+                                </Link>
+                            </div>
+                                <br />
+                                <br />
+                                <br />
                                 <h1 className='display-1'>{record.patientId}</h1>
 
                                 <div className='row'>
@@ -62,37 +65,23 @@ function ExamDetails() {
                                             <h3 className='mt-5 mb-5'>Zip Code: {record.zipCode}</h3>
                                             <h3 className='mt-5 mb-5'>BMI: {record.bmi}</h3>
                                         </div>
-                                        <div className='col-6'>
-                                            <h3 className='mt-5 mb-5'>Exams: {record.exams}</h3>
- 
 
-                                            <div className='position-absolute bottom-0 start-0'>
-
-                                                <Link to={"/"}>
-                                                    <h3 className='return'>Return to Records</h3>
-                                                </Link>
-                                            </div>
-
+                                        <div className='col'>
+                                            <img className='ms-5 mt-3 rounded' width={625} src={imgApi + record.exams.image} alt="chest x-ray"
+                                                onClick={() => window.open(imgApi + record.exams.image)}>
+                                            </img>
                                         </div>
 
-
-                                    </div>
-                                    <div className='col'>
-                                        <img className='ms-5 mt-3 rounded' width={625} src={imgApi + record.exams.image} alt="chest x-ray"
-                                            onClick={() => window.open(imgApi + record.exams.image)}>
-                                        </img>
+                                        <h3>Exams: {record.exams}</h3>
+                                        <div className="exams_container">
+                                            <div className="exams_table"></div>
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
-
-
-                        </div>
-
-                    )
+                        
+                        )
             }
-
-
         </div>
     )
 }

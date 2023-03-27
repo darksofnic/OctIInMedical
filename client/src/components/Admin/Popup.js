@@ -157,7 +157,7 @@ export default function Popup(props) {
         ) : <div className='popup'>
             <div className='popup-inner'>
                 <button className='close-btn' onClick={() => props.setTrigger(false)}>X</button>
-                <PatientMaker lastID={props.pop}/>
+                <PatientMaker lastID={props.pop} />
             </div>
         </div>) : "";
 

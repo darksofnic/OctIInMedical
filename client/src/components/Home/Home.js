@@ -13,7 +13,7 @@ function Home({data}) {
       {
         data && (data.length === 0 ?     
         <Popup
-          trigger={true} setTrigger={setNewPatient} pop={"00000001"}
+          trigger={true} setTrigger={setNewPatient} pop={"000000"}
         /> : 
         data.map(exam => {
           return (

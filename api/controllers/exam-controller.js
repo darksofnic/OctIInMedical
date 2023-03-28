@@ -30,13 +30,25 @@ const getOneExam = async(req, res) => {
 
 //create a new exam
 const createExam = async(req, res) => {
-  const {patientId, age, sex, zipCode, bmi, weight, image, examID, icuAdmit, icuNum, mortality} = req.body
-
+  const {
+    patientId,
+    age,
+    sex,
+    zipCode,
+    bmi,
+    exams
+  } = req.body;
   try {
-      const exam = await Exam.create({patientId, age, sex, zipCode, bmi, weight, image, examID, icuAdmit, icuNum, mortality})
-      res.status(200).json(exam)
+      const exam = await Exam.create({     
+        patientId,
+        age,
+        sex,
+        zipCode,
+        bmi,
+        exams})
+      res.status(200).json({success:true, data: exam})
   } catch(error) {
-      res.status(400).json({error: error.message})
+      res.status(400).json({success:false ,error: error.message})
   }
 }
 

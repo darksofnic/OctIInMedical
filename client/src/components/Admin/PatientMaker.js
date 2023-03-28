@@ -14,7 +14,16 @@ export default function PatientMaker(props) {
         sex: "",
         zipCode: "",
         bmi: "",
-        exams: ""
+        exams: {
+            examID: "",
+            image: {
+              name: "",
+              data: "",
+              contentType: "image/jpe"
+            },
+            note: "",
+            brixia: "",
+          }
 
     });
 
@@ -36,22 +45,30 @@ export default function PatientMaker(props) {
     const handleAddFormSubmit = (event) => {
         event.preventDefault();
 
-        fetch('http://localhost:9000/exams/', {
+        
+
+        const newPatient ={
+            patientId: "COVID-19-AR-"+(parseInt(props.lastID) +1).toString().padStart(props.lastID.length, "0"),
+            age: addFormData.age,
+            sex: addFormData.sex,
+            zipCode: addFormData.zipCode,
+            bmi: addFormData.bmi,
+        }
+
+        fetch('http://localhost:9000/exams', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                patientId: "COVID-19-AR-"+(parseInt(props.lastID) +1).toString().padStart(props.lastID.length, "0"),
-                age: addFormData.age,
-                sex: addFormData.sex,
-                zipCode: addFormData.zipCode,
-                bmi: addFormData.bmi
-
-            })
+            body: JSON.stringify(newPatient)
         })
-            .then(res => window.location.reload(false))
+            .then(res => {
+                if(!res.ok)
+                    throw new Error("Failed to create new patient")
+                window.location.reload(false)
+                return res.json();
+                }).then(data => console.log("New patient created: ", data))
             .catch(err => console.log(err));
     }
 

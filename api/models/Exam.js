@@ -4,14 +4,27 @@ const Schema = mongoose.Schema
 
 //exam schema
 
+const imageSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    data: {
+        type: Buffer,
+        required: true
+    },
+     contentType: {
+        type: String,
+        required: true
+    }
+})
+
 const examSchema = new Schema({
 
     examID: {
         type: String,
     },
-    image: {
-        type: String,
-    },
+    image: [imageSchema],
     note: {
         type: String
     },
@@ -45,7 +58,7 @@ const patientSchema = new Schema({
         type: Number,
         
     },
-    exams: [{ examSchema }],
+    exams: [examSchema ],
 
 
 }, { timestamps: true })

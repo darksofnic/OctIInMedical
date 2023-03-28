@@ -1,14 +1,15 @@
 import './Card.css'
 import React from 'react';
 import { Link } from "react-router-dom";
+import found from "../../images/found.jpg"
 
 function Card(props) {
     const exam = props
-    const imgApi = "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/"
+
     return (
         <div className="card-container">
             <div className='image-container'>
-                <img src={imgApi + exam.imageUrl} alt="chest x-ray"></img>
+                <img src={found} alt="cardPictures"></img>
             </div>
             <div className='card-content'>
                 <div className='card-title'>

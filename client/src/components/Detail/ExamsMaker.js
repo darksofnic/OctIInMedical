@@ -24,15 +24,12 @@ export default function ExamsMaker(props) {
     });
 
 
+
     const handleEditFormChange = (event) => {
         event.preventDefault();
 
         const fieldName = event.target.getAttribute("name");
         const fieldValue = event.target.value;
-        if(fieldName === "ExamID"){
-
-        }
-
 
         const newFormData = { ...editFormData };
         newFormData[fieldName] = fieldValue;
@@ -40,22 +37,24 @@ export default function ExamsMaker(props) {
         setEditFormData(newFormData);
        
     }
-
-    console.log(editFormData.ExamID);
+    
+    
     const newExam = {
       
-      examID:  (editFormData.ExamID !== undefined?  editFormData.ExamID : "Exam-AR-"+(parseInt(props.listSize)+1).toString().padStart(6, "0")),
+      examID:   (editFormData.ExamID !== undefined && editFormData.ExamID !== ""  ? editFormData.ExamID : props.defaultID ),
       image: {
         name: (editFormData.Image !== "" ? editFormData.Image : props.singlePatient.exams),
-        data: (editFormData.Image !== "" ? editFormData.image : "../../images/found.jpg"),
+        data: (editFormData.Image !== "" ? editFormData.Image : "../../images/found.jpg"),
       },
       note: editFormData.Note ,
       brixia: editFormData.Brixia 
     };
+    
 
     //Adds input data to database with the API as a json form
     
     const handleEditFormSubmit = (event) => {
+        
         event.preventDefault();
         fetch('http://localhost:9000/exams/' + props.singlePatient._id, {
             method: 'PATCH',
@@ -84,7 +83,7 @@ export default function ExamsMaker(props) {
                                 type="text"
                                 name="ExamID"
                                 title="ExamID"
-                                defaultValue={props.singlePatient.exams.examID}
+                                defaultValue={props.defaultID}
                                 placeholder="ExamID"
                                 onChange={handleEditFormChange}>
                             </input>

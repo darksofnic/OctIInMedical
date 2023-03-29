@@ -57,29 +57,29 @@ function ExamDetails() {
         console.log(numToShow)
     }
 
-    const handlePagination = moving => (e) => {
-        console.log("goto is " + goTo)
-  
-        if(goTo == 0 && moving < 0)
-            {
-                console.log("First condition")
-                setValidB(false);
-                setValidF(true);
-                moving=0;
-
-            }
-        else if (singlePatient.exams.length < moving){
-            console.log("Else")
-            setValidB(true);
-            setValidF(false);
-            moving=0;
-        }
-        setGoto(goTo+moving);
+    const handlePagination = (moving) => (e) => {
+        console.log("goto is " + goTo);
+        const numExams = singlePatient.exams.length;
+        const maxIndex = numExams - 1;
+        const minIndex = 0;
+        const newGoTo = goTo + moving;
         
-    
-
-    }
-
+        if (newGoTo < minIndex) {
+          console.log("First condition");
+          setValidB(false);
+          setValidF(true);
+          setGoto(minIndex);
+        } else if (newGoTo > maxIndex - 2) {
+          console.log("Else");
+          setValidB(true);
+          setValidF(false);
+          setGoto(maxIndex - 2);
+        } else {
+          setValidB(true);
+          setValidF(true);
+          setGoto(newGoTo);
+        }
+      };
 
     return (
         <>

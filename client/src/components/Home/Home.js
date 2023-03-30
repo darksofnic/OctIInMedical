@@ -21,7 +21,7 @@ function Home({data}) {
                   <Card 
                     patientId = {exam.patientId}
                     patientName = {exam.patientName}
-                    imageUrl = {exam.image}
+                    exams = {exam.exams}
                     age = {exam.age}
                     sex = {exam.sex}
                   />

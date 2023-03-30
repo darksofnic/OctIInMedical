@@ -18,9 +18,7 @@ const getExams = async(req, res) => {
 //get a single exam
 const getOneExam = async(req, res) => {
   const id = req.params
-
   const exam = await Exam.findById(id)
-
   if(!exam) {
     return res.status(400).json({error: "No such exam"})
   }
@@ -55,9 +53,6 @@ const createExam = async(req, res) => {
 //delete an exam
 const deleteExam = async(req, res) => {
   const id = req.params
-
-
-
   const exam = await Exam.findOneAndDelete({_id: id})
 
   if(!exam) {

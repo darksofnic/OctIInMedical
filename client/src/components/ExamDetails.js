@@ -54,32 +54,27 @@ function ExamDetails() {
 
     const handleExamClick = exam => (e) => {
         console.log(exam.examID)
-        console.log(numToShow)
     }
 
     const handlePagination = (moving) => (e) => {
-        console.log("goto is " + goTo);
-        const numExams = singlePatient.exams.length;
-        const maxIndex = numExams - 1;
+        const maxIndex = singlePatient.exams.length - 1;
         const minIndex = 0;
         const newGoTo = goTo + moving;
-        
+
         if (newGoTo < minIndex) {
-          console.log("First condition");
-          setValidB(false);
-          setValidF(true);
-          setGoto(minIndex);
+            setValidB(false);
+            setValidF(true);
+            setGoto(minIndex);
         } else if (newGoTo > maxIndex - 2) {
-          console.log("Else");
-          setValidB(true);
-          setValidF(false);
-          setGoto(maxIndex - 2);
+            setValidB(true);
+            setValidF(false);
+            setGoto(maxIndex - 1);
         } else {
-          setValidB(true);
-          setValidF(true);
-          setGoto(newGoTo);
+            setValidB(true);
+            setValidF(true);
+            setGoto(newGoTo);
         }
-      };
+    };
 
     return (
         <>
@@ -96,56 +91,54 @@ function ExamDetails() {
                         <br />
                         <br />
                         <h1 className='display-1'>{singlePatient.patientId}</h1>
+                        <div className="detail_container">
+                            <div>
+                                <h3>Age: {singlePatient.age}</h3>
+                                <h3>Sex: {singlePatient.sex}</h3>
+                                <h3>Zip Code: {singlePatient.zipCode}</h3>
+                                <h3>BMI: {singlePatient.bmi}</h3>
+                            </div>
 
-                        <div className='row'>
-                            <div className='col row position-relative'>
 
 
-                                <div className='col-6'>
-                                    <h3 className='mt-2 mb-2'>Age: {singlePatient.age}</h3>
-                                    <h3 className='mt-2 mb-2'>Sex: {singlePatient.sex}</h3>
-                                    <h3 className='mt-2 mb-2'>Zip Code: {singlePatient.zipCode}</h3>
-                                    <h3 className='mt-2 mb-2'>BMI: {singlePatient.bmi}</h3>
+                            <div className="exams_container">
+                                <div className='examLabel'>
+                                    <label className='examsLabel'>Exams:</label>
+                                    <button className="add_btn" onClick={handleClick}>add</button>
                                 </div>
-
-                                <div className='col'>
-
-                                </div>
-
-                                <h3>Exams:</h3>
-                                <button className="add_btn" onClick={handleClick}>add</button>
-                                <div className="exams_container">
-                                    <div className="exams_table">
-                                        {singlePatient && singlePatient.exams ?
-                                            <>
-                                                <div className="table_left">
-                                                    {singlePatient && singlePatient.exams.slice(goTo, goTo+3).map((exam, index) => (
-                                                        <CardExam className="card_container" key={index}
-                                                            exam={exam}
-                                                            action={handleExamClick} />
-                                                    ))}
-                                                </div>
-
-                                                <div className="table_right">
-                                                    {singlePatient && singlePatient.exams.slice(goTo+3, goTo+6).map((exam, index) => (
-                                                        <CardExam className="card_container" key={index}
-                                                            exam={exam}
-                                                            action={handleExamClick} />
-                                                    ))}
-                                                </div>
-                                            </> : <p >No exams found.</p>}
-                                    </div>
+                                <div className="exams_table">
                                     <button className="prev" onClick={handlePagination(back)} disabled={!isValidBack} >&#x276E;</button>
-                                    <button className="next" onClick={handlePagination(foward)} disabled={!isValidFoward}>&#10095;</button>
-                                    {//singlePatient.exams.length > 6 && (
-                                        //   <div className="view_more">
-                                        //       <button onClick={() => setShowMore(!showMore)}>
-                                        //           {showMore ? "View Less" : "View More"}
-                                        //       </button>
-                                        //   </div>)
+                                    {singlePatient.exams.length !== 0 ?
+                                        <>
+                                            <div className="table_left">
+                                                {singlePatient && singlePatient.exams.slice(goTo, goTo + 3).map((exam, index) => (
+                                                    <CardExam className="card_container" key={index}
+                                                        exam={exam}
+                                                        action={handleExamClick} />
+                                                ))}
+                                            </div>
 
+                                            <div className="table_right">
+                                                {singlePatient && singlePatient.exams.slice(goTo + 3, goTo + 6).map((exam, index) => (
+                                                    <CardExam className="card_container" key={index}
+                                                        exam={exam}
+                                                        action={handleExamClick} />
+                                                ))}
+                                            </div>
+                                        </> : <p>No exams found.</p>
                                     }
+                                    <button className="next" onClick={handlePagination(foward)} disabled={!isValidFoward}>&#10095;</button>
                                 </div>
+
+
+                                {//singlePatient.exams.length > 6 && (
+                                    //   <div className="view_more">
+                                    //       <button onClick={() => setShowMore(!showMore)}>
+                                    //           {showMore ? "View Less" : "View More"}
+                                    //       </button>
+                                    //   </div>)
+
+                                }
                             </div>
                         </div>
                     </div>

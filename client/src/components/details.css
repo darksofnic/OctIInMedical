@@ -1,46 +1,60 @@
 img:hover {
     cursor: pointer;
 }
+
 .return {
     position: absolute;
     right:90%;
     padding: 20px;
+    
+}
+.return:hover{
+  box-shadow: 0px 5px 10px lightblue;
+}
+.examLabel{
+  display:flex;
+}
+
+.examLabel label{
+  background-color: rgba(207, 227, 230, 0.329);
+  padding: 10px 20px;
+  font-weight: bold;
+
 }
 
 .add_btn{
   transition-duration: 0.4s;
-  background-color: #acd8f07a;
+  background-color: rgba(207, 227, 230, 0.329);
   border: 0.5px solid rgba(102, 102, 102, 0.151);
   border-radius: 4px;
   font-weight: bold;
   color:black;
   font-size: 15px; 
-  margin-left: 85%;
-  max-width: 100px;
-  max-height: 100px;
+  margin-left: 80%;
+  padding: 10px 20px;
+
+
 }
 .add_btn:hover{
   background-color: rgb(250, 250, 250);
   border: 1px solid rgba(0, 212, 212, 0.514);
   color: black;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
 }
-
 .exams_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
-    background-color: #000;
-  }
-
+    display:table;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: auto;
+}
   .exams_table{
     display:flex;
     justify-content: center;
     align-items: center;
     width: 800px;
     height: 400px;
-    background-color: rgba(207, 227, 230, 0.329);
-    border: 1px solid #000;
+    background-color: rgba(207, 227, 230, 0.329);   
     border-radius: 3px;
     box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
 }
@@ -52,15 +66,9 @@ img:hover {
     background-color: rgba(250, 251, 252, 0.637);
     width:350px;
     height: 350px;
-    
-  }
-  .table_left{
-    
-   
   }
   .table_right{
-    border-left: 1px solid #58565652;
-    
+    border-left: 1px solid #58565652; 
   }
 
   .card_exam {
@@ -86,8 +94,6 @@ img:hover {
   
   .prev, .next{
     cursor: pointer;
-    position: absolute;
-    top: 65%;
     width: auto;
     margin-top: -22px;
     padding: 16px;
@@ -103,11 +109,9 @@ img:hover {
   
 /* Position the "next button" to the right */
 .next {
-  right: 10px;
   border-radius: 3px 0 0 3px;
 }
 .prev {
-  left: 10px;
   border-radius: 3px 0 0 3px;
   
 }

@@ -108,7 +108,7 @@ export default function PatientMaker(props) {
                 </Tooltip>
                 <Tooltip text="BMI">
                 <label>BMI</label><input
-                    type="number"
+                    type="numberic"
                     name="bmi"
                     required="required"
                     placeholder="BMI..."

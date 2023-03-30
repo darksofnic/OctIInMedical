@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
 import './ExamsMaker.css'
-import Found from '../../images/found.jpg'
 export default function ExamsMaker(props) {
 
 
@@ -16,12 +15,14 @@ export default function ExamsMaker(props) {
           image: [{
             name: "",
             data: "",
-            contentType: "image/jpe"
+            contentType: "image/png"
           }],
           note: "",
           brixia: "",
         }]
     });
+
+    const[extension, setExt]=useState("");
 
 
 
@@ -29,7 +30,13 @@ export default function ExamsMaker(props) {
         event.preventDefault();
 
         const fieldName = event.target.getAttribute("name");
+       
         const fieldValue = event.target.value;
+
+        if(fieldName==="Image"){
+            const ext = fieldValue.split('.')
+            setExt(ext[1])
+        }
 
         const newFormData = { ...editFormData };
         newFormData[fieldName] = fieldValue;
@@ -43,8 +50,9 @@ export default function ExamsMaker(props) {
       
       examID:   (editFormData.ExamID !== undefined && editFormData.ExamID !== ""  ? editFormData.ExamID : props.defaultID ),
       image: {
-        name: (editFormData.Image !== "" ? editFormData.Image : props.singlePatient.exams),
+        name:  props.defaultID,
         data: (editFormData.Image !== "" ? editFormData.Image : "../../images/found.jpg"),
+        contentType: "image/"+extension
       },
       note: editFormData.Note ,
       brixia: editFormData.Brixia 
@@ -91,13 +99,13 @@ export default function ExamsMaker(props) {
                         <div className='form-group'>
                             <label>Image</label>
                             <input
-                                type="number"
+                                type="file"
                                 name="Image"
                                 title="Image"
                                 defaultValue={props.singlePatient.exams.Image}
                                 placeholder="Image"
                                 onChange={handleEditFormChange}>
-                            </input>
+                            </input><label>{"."+extension}</label>
                         </div>
                         <div className='form-group'>
                             <label>note</label>
